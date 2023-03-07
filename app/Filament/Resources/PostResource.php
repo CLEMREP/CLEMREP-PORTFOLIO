@@ -44,9 +44,11 @@ class PostResource extends Resource
                 Forms\Components\Select::make('published')
                     ->label('Published')
                     ->options([
-                        0 => 'No',
-                        1 => 'Yes',
+                        1 => 'Publier',
+                        0 => 'Brouillon',
                     ])
+                    ->disablePlaceholderSelection()
+                    ->default([0])
                     ->required(),
             ])
             ->columns(1);
