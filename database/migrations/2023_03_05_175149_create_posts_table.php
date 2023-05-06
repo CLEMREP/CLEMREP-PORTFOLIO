@@ -17,9 +17,8 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained();
             $table->string('title');
             $table->string('slug');
-            $table->text('content');
-            $table->text('excerpt');
-            $table->string('preview')->nullable();
+            $table->longText('content');
+            $table->string('cover_path')->nullable();
             $table->boolean('published')->default(false);
             $table->timestamps();
             $table->softDeletes();

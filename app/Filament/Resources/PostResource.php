@@ -9,6 +9,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Support\Str;
+use Spatie\FilamentMarkdownEditor\MarkdownEditor;
 
 class PostResource extends Resource
 {
@@ -27,20 +29,20 @@ class PostResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('title')
                     ->label('Title')
+                    ->reactive()
+                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state)))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->label('Slug')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('excerpt')
-                    ->label('Excerpt')
-                    ->required()
-                    ->maxLength(65535),
-                Forms\Components\MarkdownEditor::make('content')
-                    ->label('Content')
-                    ->required()
-                    ->maxLength(65535),
+                Forms\Components\FileUpload::make('cover_path')
+                    ->label('Image de couverture'),
+                MarkdownEditor::make('content')
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsVisibility('public')
+                    ->required(),
                 Forms\Components\Select::make('published')
                     ->label('Published')
                     ->options([
@@ -79,6 +81,7 @@ class PostResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

@@ -15,8 +15,7 @@ class Post extends Model
         'title',
         'slug',
         'content',
-        'excerpt',
-        'preview',
+        'cover_path',
         'published',
     ];
 

@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.1/css/line.css">
 
         <!--==================== CSS ====================-->
-        @vite(['resources/css/styles.css', 'resources/css/swiper-bundle.min.css'])
+        @vite(['resources/css/styles.css', 'resources/css/swiper.min.css'])
 
         <title>CLEMREP - Portfolio</title>
     </head>
@@ -41,7 +41,7 @@
                         </li> -->
                         <li class="nav__item">
                             <a href="{{ route('posts.index') }}" class="nav__link">
-                                <i class="uil uil-scenery nav__icon"></i> Portfolio
+                                <i class="uil uil-scenery nav__icon"></i> Projets
                             </a>
                         </li>
                         <li class="nav__item">
@@ -112,7 +112,7 @@
                         </div>
 
                         <div class="home__data">
-                            <h1 class="home__title">Hi, I'am Clément</h1>
+                            <h1 class="home__title">Hi, I'm Clément</h1>
                             <h3 class="home__subtitle">Étudiant en Informatique</h3>
                             <p class="home__description">Actuellement, en BTS Services Informatiques aux Organisations, Option SLAM (Solutions Logicielles et Application Métier), au lycée Carcouët à Nantes.</p>
                             <a href="#a-propos" class="button button--flex">
@@ -634,6 +634,7 @@
             </section> -->
 
             <!--==================== PORTFOLIO ====================-->
+
 {{--            <section class="portfolio section" id="portfolio">--}}
 {{--                <h2 class="section__title">Portfolio</h2>--}}
 {{--                <span class="section__subtitle">Mes dernières réalisations</span>--}}

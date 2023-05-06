@@ -1,0 +1,44 @@
+ol, ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+h1 {
+    font-size: var(--h1-font-size);
+}
+
+h2 {
+    font-size: var(--h2-font-size);
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+}
+
+span, a {
+    color: #5785e0;
+}
+
+img {
+    height: 50%;
+    width: auto;
+    display: flex;
+    margin: auto;
+}
+
+.article {
+    max-width: 800px!important;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 16px;
+    margin-left: 32px;
+    border-left: 4px solid #CCC;
+    padding-left: 8px;
+}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
     <!--==================== CSS ====================-->
-    @vite(['resources/css/styles.css', 'resources/css/swiper-bundle.min.css'])
+    @vite(['resources/css/styles.css', 'resources/css/markdown.css', 'resources/css/swiper.min.css'])
 
     <title>CLEMREP - Portfolio</title>
 </head>
@@ -41,7 +41,7 @@
                     </li> -->
                     <li class="nav__item">
                         <a href="{{ route('posts.index') }}" class="nav__link active-link">
-                            <i class="uil uil-scenery nav__icon"></i> Portfolio
+                            <i class="uil uil-scenery nav__icon"></i> Projets
                         </a>
                     </li>
                     <li class="nav__item">
@@ -74,12 +74,12 @@
         </nav>
     </header>
     <main class="main">
-        <section class="container section">
+        <section class="container section article">
             <div class="project__header">
-                <div class="project__tags">
-                    <p class="project__tag">Développement</p>
-                </div>
-                <h1 itemprop="headline" title="{{ $post->title }}">
+{{--                <div class="project__tags">--}}
+{{--                    <p class="project__tag">Développement</p>--}}
+{{--                </div>--}}
+                <h1 itemprop="headline" class="project__title" title="{{ $post->title }}">
                     {{ $post->title }}
                 </h1>
                 <p class="gray">
@@ -89,10 +89,12 @@
                 </span>
                     le <span>{{ $post->created_at->isoFormat('ll') }}</span>.
                 </p>
+
+                <img style="margin-top: 2rem; border-radius: 2rem;" src="{{ asset('/storage/' . $post->cover_path) }}">
             </div>
 
-            <div>
-                {!! \Illuminate\Support\Str::marxdown($post->content) !!}
+            <div class="break-words prose prose-a:bg-indigo-100 prose-a:font-bold prose-a:no-underline prose-a:text-indigo-400 prose-blockquote:border-l-[6px] prose-blockquote:border-indigo-200 prose-blockquote:font-serif prose-blockquote:text-indigo-900/75 prose-h3:leading-tight prose-img:my-0 prose-figure:mx-auto prose-figure:text-center prose-figure:sm:w-2/3 prose-figure:md:w-1/2 prose-strong:font-bold !max-w-none mt-8">
+                {!! preg_replace('#(<ol[^>]*>.*?</ol>)(?:\h*<br\s*/?>)?|\n#si', '$1 <br />', \Illuminate\Support\Str::marxdown($post->content)) !!}
             </div>
         </section>
     </main>

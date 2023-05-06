@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
     <!--==================== CSS ====================-->
-    @vite(['resources/css/styles.css', 'resources/css/swiper-bundle.min.css'])
+    @vite(['resources/css/styles.css', 'resources/css/swiper.min.css'])
 
     <title>CLEMREP - Portfolio</title>
 </head>
@@ -41,7 +41,7 @@
                     </li> -->
                     <li class="nav__item">
                         <a href="{{ route('posts.index') }}" class="nav__link active-link">
-                            <i class="uil uil-scenery nav__icon"></i> Portfolio
+                            <i class="uil uil-scenery nav__icon"></i> Projets
                         </a>
                     </li>
                     <li class="nav__item">
@@ -77,15 +77,19 @@
     <!--==================== MAIN ====================-->
     <main class="main">
         <section class="projets container section">
-            <h2 class="section__title">Mon portfolio</h2>
+            <h2 class="section__title">Mes projets</h2>
             <span class="section__subtitle">Vous pouvez retrouver ici tous mes projets.</span>
-
+            <div class="project__buttons">
+                <a id="tab" href="http://clemrep-folio.test/storage/pdf/Tableau_de_synthese.pdf" target="_blank" class="button button--flex">
+                    Tableau de synthèse<i class="uil uil-download-alt button__icon"></i>
+                </a>
+            </div>
             <div class="projets__parent">
                 @foreach($posts as $post)
                     <a href="{{ route('posts.show', ['post' => $post->slug]) }}">
                         <article class="project__item">
                             <div class="project__image">
-                                <img src="{{ $post->image->path ?? 'https://res.cloudinary.com/benjamin-crozat/image/upload/dpr_auto,f_auto,q_auto,w_600/v1667430442/laravel-10_ovwmiu.png' }}">
+                                <img src="{{ $post->cover_path ? asset('/storage/' . $post->cover_path) : 'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png' }}">
                             </div>
                             <div class="project__detail">
                                 <h4>{{ $post->title }}</h4>
